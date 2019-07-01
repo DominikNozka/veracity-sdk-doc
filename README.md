@@ -2,7 +2,7 @@
 A powerfull item protection and item verification Veracity Protocol library for Android.
 
 ## Architecture overview
-![Image of SDK](https://github.com/oneprove/android-veracity-sdk/blob/master/SDK.png)
+![Image of SDK](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/SDK.png)
 
 ### Input data
 Veracity SDK takes care of the whole upload process. It allows you to automatically upload fingerprint image files, overview image and configurable data with easy interface for protection, verification and item search.
@@ -181,8 +181,8 @@ ProtectGetList(context, getListFromCache).Query {
 ## Detail Caputure
 DetailActivity includes augmented reality as well as manual guiding to obtain .png image fingerprints.
 <br/>
-![](https://github.com/oneprove/android-veracity-sdk/blob/master/ar_gif.gif)
-![](https://github.com/oneprove/android-veracity-sdk/blob/master/manual_gif.gif)
+![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/ar_gif.gif)
+![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/manual_gif.gif)
 
 ### Protection
 Configure folder where sould be two fingerprint .png files saved and set overview path and size in detialConfig constructor
