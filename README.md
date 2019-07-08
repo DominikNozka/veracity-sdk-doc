@@ -1,23 +1,23 @@
 # Android Veracity SDK
-A powerfull item protection and item verification Veracity Protocol library for Android.
+Veracity Protocol library for Android — a powerful item protection and verification.
 
 ## Architecture overview
 ![Image of SDK](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/SDK.png)
 
 ### Input data
-Veracity SDK takes care of the whole upload process. It allows you to automatically upload fingerprint image files, overview image and configurable data with easy interface for protection, verification and item search.
+Veracity SDK takes care of the whole upload process. It allows you to automatically upload fingerprint image files, overview image, and configurable data using a simple interface for protection, verification and item search.
 
 ### Event data
-SDK automatically observe data in our database and allows you to receive protected and verified objects as well as Firebase notifications.
+The SDK automatically checks data in our database and allows you to receive protected and verified objects as well as Firebase notifications.
 
 ### API data
-Allows you to download data from our database. API includes automatic download, caching and data parsing.
+Allows you to download data from our database. The API includes automatic download, caching and data parsing.
 
 ### Detail capture
-Veracity SDK include Activity that is able to capture item fingeprint in .png file. It includes augmented reality as well as manual guiding to obtain image fingerprints.
+Veracity SDK includes an Activity enabling to capture item fingerprint in the .png file format. It includes augmented reality, as well as manual guiding mechanism to obtain image fingerprints.
 
 ## Instalation
-add the jitpack.io repository to your build.gradle file:
+Add the jitpack.io repository to your build.gradle file:
 ```
 allprojects {
  repositories {
@@ -30,7 +30,7 @@ and add implementation of sdk to your build.gradle file:
 ```
 implementation 'com.github.DominikNozka:veracity-sdk:1.0.5'
 ```
-Note: Veracity SDK is still private repository, please contact jan@veracitiyprotocol.com for our permission
+Note: Veracity SDK is still a private repository, please contact jan@veracitiyprotocol.com to obtain a permission.
 
 ## Input data (upload)
 ### Protection
@@ -105,6 +105,7 @@ class ExampleActivity:Activity(),ProtectEvent.EventListener{ ...
 2.) Initialize ProtectEvent at onCreate in your Activity 
 ```kotlin
 val protectEvent = ProtectEvent(context,this)
+protectEvent.registerReceiver()
 ```
 3.) Override methods in you Activity
 ```kotlin
@@ -127,6 +128,7 @@ class ExampleActivity:Activity(),VerifyEvent.EventListener{ ...
 2.) Initialize VerifyEvent Object at onCreate in your Activity 
 ```kotlin
 val verifyEvent = VerifyEvent(context,this)
+verifyEvent.registerReceiver()
 ```
 3.) Override methods in you Activity
 ```kotlin
@@ -149,6 +151,7 @@ class ExampleActivity:Activity(),SearchEvent.EventListener{ ...
 2.) Initialize SearchEvent Object at onCreate in your Activity 
 ```kotlin
 val searchEvent = SearchEvent(context,this)
+searchEvent.registerReceiver()
 ```
 3.) Override methods in you Activity
 ```kotlin
@@ -179,19 +182,19 @@ ProtectGetList(context, getListFromCache).Query {
 }
 ```
 ## Detail Caputure
-DetailActivity includes augmented reality as well as manual guiding to obtain .png image fingerprints.
+DetailActivity includes augmented reality, as well as manual guiding mechanism to obtain image fingerprints in the .png file format.
 <br/>
 ![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/ar_gif.gif)
 ![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/manual_gif.gif)
 
 ### Protection
-Configure folder where sould be two fingerprint .png files saved and set overview path and size in detialConfig constructor
+Configure a folder with two fingerprint (.png files) and set an overview path and size in the detialConfig constructor.
 ```kotlin
 val detailConfigProtect = DetailConfig(captureType = DetailConfig.typeProtect,
                 folder = File(m_path),jpegPath=overview.path,overviewWidth = 40,overviewHeight = 30)
 DetailActivity.launch(detailConfigProtect,this)
 ```
-You will receive two fingerprint .png files with fingerprint location (DetailLocation) in JSON fromat onActivityResult
+You will receive two fingerprint .png files with the fingerprint location (DetailLocation) in the JSON format onActivityResult.
 ```kotlin
 override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
 
@@ -218,26 +221,26 @@ DetailActivity.launch(detailConfigVerify,this)
 ```
 
 ## Notifications
-In order to receive Firebase notifications and onSearchAnalyzingFinished, onVerifyAnalyzingFinished and onProtectAnalyzingFinished events you have to implement Firebase notifications.
+In order to receive the Firebase notifications and onSearchAnalyzingFinished, onVerifyAnalyzingFinished and onProtectAnalyzingFinished events, you have to implement the Firebase notifications.
 <br/><br/>
-1.) Implement VeracityFirebaseRegistraion interface in your Activity
+1.) Implement the VeracityFirebaseRegistraion interface in your Activity
 ```kotlin
 class ExampleActivity:Activity(),VeracityFirebase.RegistrationListener{ ...
 ```
-2.) Override registration success and failure events
+2.)  Override the registration success and failure events
 ```kotlin
 override fun onSuccess() {}
 override fun onFailure(error: String) {}
 ```
-3.) Register Firebase token to our database
+3.) Register the Firebase token to our database
 ```kotlin
 VeracityFirebase(context).registerToken("yourFirebaseToken",this)
 ```
-4.) You can always check if the token is already registered
+4.) You can always check whether the token is already registered
 ```kotlin
 VeracityFirebase(context).isTokenRegistered()
 ```
-5.) And finally in your FirebaseMessagingService let Veracity SDK read Firebase messages that you receive from FirebaseMessagingService
+5.) And finally, in your FirebaseMessagingService, let Veracity SDK read the Firebase messages that you receive from FirebaseMessagingService
 ```kotlin
 override fun  onMessageReceived(remoteMessage : RemoteMessage) {
 
@@ -247,244 +250,4 @@ override fun  onMessageReceived(remoteMessage : RemoteMessage) {
 }
 ```
 ## Example App
-Having issues with integration? Check out our [ExampleActivity](https://github.com/oneprove/android-veracity-sdk/blob/master/src/main/java/com/veracity/sdk/sample/SampleActivity.kt)
-
-______________________________________________
-
-# iOS VeracitySDK
-
-VeracitySDK covers almost all the heavy work for Veracity apps. It can provide, persist and upload data, make API requests and more.
-
-### Example
-Run `pod instal` on example app folder and run....
-
-### Instalation
-```ruby
-source 'https://github.com/CocoaPods/Specs.git'
-source 'https://github.com/oneprove/specs-oneprove.git'
-
-pod 'VeracitySDK'
-```
-
-#### Usage
-`import VeracitySDK`
-
-### API Token
-Veracity SDK works only with logged user. To do so you need to login or register that user.
-```swift
-// Login.
-NetworkClient.login(email: "loginEmail", password: "password") { (success, error) in
-    if success {
-        print("user was logged")
-    }else {
-        print(error?.localizedDescription)
-    }
-}
-```
-
-```swift
-// Register new user.
-NetworkClient.register(email: "newEmail", password: "password") { (success, error) in
-    if success {
-        print("user was registred")
-    }else {
-        print(error?.localizedDescription)
-    }
-}
-```
-
-### API data
-Allows you to download data from our database. API includes automatic download, caching and data parsing.
-#### Verifications
-To get or refresh verification data.
-```swift
-NetworkClient.jobs { (jobs, error) in
-    print(jobs.count)
-}
-```
-
-or use `JobsReloadOperation`.
-
-```swift
-let operationQueue = OperationQueue()
-let jobOP = JobsReloadOperation()
-operationQueue.addOperation(jobOP)
-```
-
-#### Protections:
-To get or refresh protect data.
-```swift
-NetworkClient.myProtectedItems { (items, error) in
-    print(items.count)
-}
-```
-
-or use `ProtectItemsReloadOperation`.
-```swift
-let operationQueue = OperationQueue()
-let protectItemsOP = ProtectItemsReloadOperation()
-operationQueue.addOperation(protectItemsOP)
-```
-
-### Input data
-#### Taken images
-Any taken image can be persisted and obtained by `ImagePersistenceManager`.
-```swift
-// Create data from taken image you wan't to persist.
-let imageData = takenImage.pngData()
-// Persist image data and get filename.
-let imageFilename = try? ImagePersistence.saveImageToDisk(imageData: imageData)
-```
-
-```swift
-// Obtain persisted image or data by filename.
-let image = ImagePersistence.imageAtDisk(byFilename: "filename")
-let imageData = ImagePersistence.imageDataAtDiskPath(byFilename: "filename")
-```
-
-#### Image Search
-To create new image search, create new `LocalJob` with `.imageSearch` type and set overview and thumbnail filename and persist local job to database.
-```swift
-// Create new image search local job.
-let newImageSearch = LocalJob(type: .imageSearch, item: nil)
-// Set required properties.
-newImageSearch.overviewImageFilename = "overview_filename"
-newImageSearch.thumbnailImageFilename = "thumbnail_filename"
-// Save to dabatase.
-RealmHandler.shared.add(newImageSearch, modifiedUpdate: true)
-// Upload start.
-```
-
-#### Verification
-To create new verification of item, create new `LocalJob` with `.verification` and type item you wan't to verify, then append fingerprint filename a persist to database.
-```swift
-// Create new verification job with item agains you wan't to verify taken fingerprint images.
-let newVerification = LocalJob(type: .imageSearch, item: verifingItem)
-// Append fingerprint.
-newVerification.appendFingerprintFilename(fingerprintImageFilename)
-// Save to database.
-RealmHandler.shared.add(newVerification, modifiedUpdate: true)
-// Upload start.
-```
-
-#### Protection
-To create new protection, create and fill `LocalProtectItem` and persist to database.
-```swift
-// Create new protect item.
-let newProtect = LocalProtectItem()
-newProtect.overviewImageFilename = "overview_filename"
-newProtect.thumbnailImageFilename = "thumbnail_filename"
-newProtect.width = 20
-newProtect.height = 30
-newProtect.name = "Item's name"
-newProtect.year = 2019
-newProtect.creator = Creator(firstName: "First", lastName: "Last")
-// Save to database as incomplete.
-RealmHandler.shared.add(newProtect, modifiedUpdate: true)
-newProtect.fingerprintLocation = FingerprintLocation(rect: CGRect(x: 20, y: 20, width: 300, height: 500))
-newProtect.appendFingerprintFilename(fingerprintImageFilename1)
-newProtect.appendFingerprintFilename(fingerprintImageFilename2)
-// Upload start.
-```
-
-### Upload
-Upload is handled automaticaly by `UploadManager`. Local item upload starts when there are filled all the required properties. All you need to do is setup manager observing after app launch.
-```swift
-UploadManager.shared.startObserving()
-```
-
-### Events & Database change
-Events are now provided only by observing for database change on one item or whole array of items as `Realm` feature.
-To observe database change for any internal object stored in. Simply get data by `RealmHandler.shared.getObjects(ofType:)` and create notification token by `observe(changes:)` to setup observing.
-
-Don't forget to `import RealmSwift`.
-
-Example how to setup changes observing on filtered jobs data.
-```swift
-var observingToken : NotificationToken?
-var verifications : Results<Job>?
-
-// Get filtered & sorted jobs data.
-verifications = RealmHandler.shared.getObjects(of: Job.self).filter("jobName == verify OR jobName == overviewSearch").sorted(byKeyPath: "createdAt", ascending: false)
-observingToken = verifications?.observe({ [weak self] (changes) in
-    guard let tableView = self?.tableView else { return }
-    switch changes {
-    case .initial:
-        // First stage, data are loaded.
-    case .update(_, let deletions, let insertions, let modifications):
-        // Something has changed. There are passed arrays of indexes of items that was changed somehow. 
-    case .error(let error):
-        // Something went wrong.
-        print("error: \(error)")
-    }
-    // Reload table view data every change.
-    tableView.reloadData()
-}
-
-// When obseving is not needed anymore.
-observingToken?.invalidate()
-```
-
-Example how to setup changes observing on filtered pretectItems data.
-```swift
-var observingToken : NotificationToken?
-var protectItems : Results<ProtectItem>?
-
-// Get sorted protectItems data.
-protectItems = RealmHandler.shared.getObjects(of: ProtectItem.self).sorted(byKeyPath: "createdAt", ascending: false)
-observingToken = protectItems?.observe({ [weak self] (changes) in
-    guard let tableView = self?.tableView else { return }
-    switch changes {
-    case .initial:
-        // First stage, data are loaded.
-    case .update(_, let deletions, let insertions, let modifications):
-        // Something has changed. There are passed arrays of indexes of items that was changed somehow. 
-    case .error(let error):
-        // Something went wrong.
-        print("error: \(error)")
-    }
-    // Reload table view data every change.
-    tableView.reloadData()
-}
-
-// When obseving is not needed anymore.
-observingToken?.invalidate()
-```
-
-### Notifications
-Notification are by default serviced by firebase. To setup Firebase notification follow up [official tutorial](https://firebase.google.com/docs/ios/setup).
-
-To request user acces to notifications.
-```swift
-NotificationManager.shared.requestAccess()
-```
-
-To register notification token, pass token every app launch & token change to `NotificationManager`. 
-```swift
-func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-    if let fcmToken = Messaging.messaging().fcmToken {
-        NotificationManager.shared.didRegisterForFirebaseNotifications(withToken: fcmToken)
-    }
-}
-
-// Messaging delegate method to get updated token.
-func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String) {
-    NotificationManager.shared.didRegisterForFirebaseNotifications(withToken: fcmToken)
-}
-```
-And to process received notification, pass it's payload to `NotificationManager`.
-```swift
-NotificationManager.shared.processReceivedNotification(userInfo: ["key" : "value"])
-```
-### Fingerprint capture
-To capture fingerprint there are two ways.
-
-#### AR
-![AR](https://github.com/oneprove/android-veracity-sdk/blob/master/ar_gif.gif)
-
-For more information & how to use [check repo](https://github.com/oneprove/ios-ARCameraController)
-
-#### MAP
-![MAP](https://github.com/oneprove/android-veracity-sdk/blob/master/manual_gif.gif)
-
-For more information & how to use [check repo](https://github.com/oneprove/ios-MAPView)
+Having issues with the integration? Check out our [ExampleActivity](https://github.com/oneprove/android-veracity-sdk/blob/master/src/main/java/com/veracity/sdk/sample/SampleActivity.kt)
