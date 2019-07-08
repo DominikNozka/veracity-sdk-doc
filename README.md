@@ -210,7 +210,7 @@ override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent) {
 ```
 
 ### Verification
-Verify detail capture requires DetailLocation. OnActivityResult you will receive only one fingerprint file that is needed for verification.
+Verify detail capture requires Detail Location. OnActivityResult you will receive only one fingerprint file that is required for the verification.
 ```kotlin
 val detailLocation = DetailLocation(100,100,1500,2000)
             val detailConfigVerify = DetailConfig(captureType = DetailConfig.typeVerify,
