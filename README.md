@@ -250,4 +250,4 @@ override fun  onMessageReceived(remoteMessage : RemoteMessage) {
 }
 ```
 ## Example App
-Having issues with the integration? Check out our [ExampleActivity](https://github.com/oneprove/android-veracity-sdk/blob/master/src/main/java/com/veracity/sdk/sample/SampleActivity.kt)
+Having issues with the integration? Check out our [ExampleActivity](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/SampleActivity.kt)
