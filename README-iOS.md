@@ -229,9 +229,9 @@ There are two ways to capture a fingerprint.
 #### AR
 ![AR](https://github.com/oneprove/android-veracity-sdk/blob/master/ar_gif.gif)
 
-For more information & how to use [check repo](https://github.com/oneprove/ios-ARCameraController)
+For more information & how to use [check readme](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/README_AR.md)
 
 #### MAP
 ![MAP](https://github.com/oneprove/android-veracity-sdk/blob/master/manual_gif.gif)
 
-For more information & how to use [check repo](https://github.com/oneprove/ios-MAPView)
+For more information & how to use [check readme](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/README_MAP.md)
