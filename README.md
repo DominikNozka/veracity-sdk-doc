@@ -200,7 +200,9 @@ ProtectGetList(context, getListFromCache).Query {
 ```
 
 ### Image Cropp
+Veracity SDK includes image cropp library with automatic edge detection and perspective correction 
 ![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/image_cropp.gif)
+
 ## Detail Caputure
 DetailActivity includes augmented reality, as well as manual guiding mechanism to obtain image fingerprints in the .png file format.
 <br/>
