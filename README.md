@@ -275,3 +275,5 @@ val detailLocation = DetailLocation(100,100,1500,2000)
 
 DetailActivity.launch(detailConfigVerify,this)
 ```
+### Demo project
+If you are interested in cooperation. We will send you the demo project with your authentication token and credentials for fast and flawless integration into your project. Please contact jan@veracitiyprotocol.org for more info.
