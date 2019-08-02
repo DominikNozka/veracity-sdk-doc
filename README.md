@@ -119,19 +119,6 @@ val verifyAdd = VerifyAdd.Builder()
 VeracitySdk(context).upload(verifyAdd)
 ```
 
-### Image Search
-1. Create VerifyAdd object
-```kotlin
- val searchAdd = SearchAdd.Builder()
-                .setOverviewImg("path/to/overview.jpg")
-                .setThumbnailImg("path/to/thumbnail.jpg")
-                .create()
-            
-```
-2. Upload SearchAdd object with Veracity SDK
-```kotlin
-VeracitySdk(context).upload(searchAdd)
-```
 ## Event data
 ### Protect events
 1.) Implement ProtectEvent interface in your Activity
@@ -179,28 +166,6 @@ override fun onVerifyAnalyzingFinished(verifyGet: VerifyGet) {}
 verifyEvent.unregisterReceiver()
 ```
 
-### Search events
-1.) Implement SearchEvent interface in your Activity
-```kotlin
-class ExampleActivity:Activity(),SearchEvent.EventListener{ ...
-```
-2.) Initialize SearchEvent Object at onCreate in your Activity 
-```kotlin
-val searchEvent = SearchEvent(context,this)
-searchEvent.registerReceiver()
-```
-3.) Override methods in you Activity
-```kotlin
-override fun onSearchUploadingStarted(searchAdd: SearchAdd) {}
-override fun onSearchUploadingFailed(failReason: String, searchAdd: SearchAdd) {}
-override fun onSearchUploadingProgress(progress: Int, uploadSpeed: String, searchAdd: SearchAdd) {}
-override fun onSearchUploadingFinished(searchAdd: SearchAdd) {}
-override fun onSearchAnalyzingFinished(verifyGet: VerifyGet) {}
-```
-4.) Unregister SearchEvent Object at onDestroy in your Activity 
-```kotlin 
-searchEvent.unregisterReceiver()
-```
 ## API data get
 ### Verifications 
 ```kotlin
@@ -254,36 +219,6 @@ val detailLocation = DetailLocation(100,100,1500,2000)
                 overviewHeight = 30,detailLocation = detailLocation)
 
 DetailActivity.launch(detailConfigVerify,this)
-```
-
-## Notifications
-In order to receive the Firebase notifications and onSearchAnalyzingFinished, onVerifyAnalyzingFinished and onProtectAnalyzingFinished events, you have to implement the Firebase notifications.
-<br/><br/>
-1.) Implement the VeracityFirebaseRegistraion interface in your Activity
-```kotlin
-class ExampleActivity:Activity(),VeracityFirebase.RegistrationListener{ ...
-```
-2.)  Override the registration success and failure events
-```kotlin
-override fun onSuccess() {}
-override fun onFailure(error: String) {}
-```
-3.) Register the Firebase token to our database
-```kotlin
-VeracityFirebase(context).registerToken("yourFirebaseToken",this)
-```
-4.) You can always check whether the token is already registered
-```kotlin
-VeracityFirebase(context).isTokenRegistered()
-```
-5.) And finally, in your FirebaseMessagingService, let Veracity SDK read the Firebase messages that you receive from FirebaseMessagingService
-```kotlin
-override fun  onMessageReceived(remoteMessage : RemoteMessage) {
-
-    if (remoteMessage.getData().size() > 0) {
-        VeracityFirebase(context).readMsg(remoteMessage.data)
-    }
-}
 ```
 ## Example App
 Having issues with the integration? Check out our [ExampleActivity](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/SampleActivity.kt)
