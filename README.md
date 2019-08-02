@@ -36,7 +36,7 @@ implementation 'com.github.DominikNozka:veracity-sdk:1.0.5'
 Veracity SDK is still a private repository, please contact jan@veracitiyprotocol.org to obtain authToken
 add the token to $HOME/.gradle/gradle.properties:
 ```groovy
-authToken=pleaseContact_jan@veracitiyprotocol.org_toObtainAuthTo
+authToken=insertYourObtainedTokenHere
 ```
 
 add permissions, Activities and Service declaration to your AndroidManifest.xml
