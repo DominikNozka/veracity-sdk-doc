@@ -86,6 +86,7 @@ Authenticate(this@MainActivity).logIn("Email","Password",this)
 1. Create ProtectAdd object
 ```kotlin
 val protectAdd = ProtectAdd.Builder()
+                  //all parameters are required
                 .setArtistFirstname("Dominik")
                 .setArtistLastname("Nožka")
                 .setYear(1993)
@@ -112,10 +113,12 @@ VeracitySdk(context).upload(protectAdd)
 1. Create VerifyAdd object
 ```kotlin
 val verifyAdd = VerifyAdd.Builder()
+                  //requred parameters
                 .setFingerprint("path/to/fingeprint.png")
+                .setArtworkId("5c30b27a507d460004bd8059")
+                  //optional parameters
                 .setThumbnailImage("path/to/thumbnail.jpg")
                 .setOverviewImage("path/to/overview.jpg")
-                .setArtworkId("5c30b27a507d460004bd8059")
                 .setArtworkPublicId("artPublicId")
                 .setName("name")
                 .setAuthorFirstName("authorFirstname")
