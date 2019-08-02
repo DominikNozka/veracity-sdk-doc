@@ -2,7 +2,7 @@
 Veracity Protocol library for Android — a powerful item protection and verification.
 
 ## Architecture overview
-![Image of SDK](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/SDK.png)
+![Image of SDK](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/SDK.jpg)
 
 ### Input data
 Veracity SDK takes care of the whole upload process. It allows you to automatically upload fingerprint image files, overview image, and configurable data using a simple interface for protection, verification and item search.
