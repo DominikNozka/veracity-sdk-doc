@@ -200,8 +200,34 @@ ProtectGetList(context, getListFromCache).Query {
 ```
 
 ### Image Cropp
-Veracity SDK includes image cropp library with automatic edge detection and perspective correction 
+Veracity SDK includes image cropp view with automatic edge detection and perspective correction 
 ![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/image_cropp.gif)
+Include CropImageView into your layout.xml file
+```xml
+<com.veracity.sdk.crop.CropImageView
+            android:id="@+id/crop_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/black"
+            android:layout_above="@+id/crop_btn"
+    />
+```
+Implement CropEvent and PostionEvent interface in your Activity
+```kotlin
+class ActivityCropp:Activity(),CropImageView.CropEvent,CropImageView.PositionEvent{
+```
+Initialize CropView, input file needs to be in 4:3(H:W) aspect ratio
+```kotlin
+crop_view.findPositions(this,this, File("path_to_4:3_input_image"),File("file_path_to_image_result"),File("file_path_to_image_result_thumbnail"))
+```
+After onPositionsFound() method call, you can crop the image
+```kotlin
+crop_view.cropImage(this)
+```
+When the image is cropped, you'll get your cropped image file with thumbnail in jpeg image format
+```kotlin
+override fun onImageCropped(jpegCropped: File,thumbnail:File){ }
+```
 
 ## Detail Caputure
 DetailActivity includes augmented reality, as well as manual guiding mechanism to obtain image fingerprints in the .png file format.
