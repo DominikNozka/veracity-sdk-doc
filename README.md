@@ -113,7 +113,7 @@ VeracitySdk(context).upload(protectAdd)
 1. Create VerifyAdd object
 ```kotlin
 val verifyAdd = VerifyAdd.Builder()
-                  //requred parameters
+                  //required parameters
                 .setFingerprint("path/to/fingeprint.png")
                 .setArtworkId("5c30b27a507d460004bd8059")
                   //optional parameters
