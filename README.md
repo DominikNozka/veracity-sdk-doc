@@ -39,7 +39,7 @@ add the token to $HOME/.gradle/gradle.properties:
 authToken=insertYourObtainedTokenHere
 ```
 
-add permissions, Activities and Service declaration to your AndroidManifest.xml
+add permissions, Activitiy and Service declaration to your AndroidManifest.xml
 ```xml
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -47,8 +47,6 @@ add permissions, Activities and Service declaration to your AndroidManifest.xml
 <uses-permission android:name="android.permission.INTERNET" />
 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-
-<activity android:name=".ActivityCropp" />
 
 <activity
       android:name="com.veracity.sdk.detail.DetailActivity"
