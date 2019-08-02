@@ -201,7 +201,8 @@ ProtectGetList(context, getListFromCache).Query {
 
 ### Image Cropp
 Veracity SDK includes image cropp view with automatic edge detection and perspective correction 
-![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/image_cropp.gif)<br/>
+<br/>
+![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/image_cropp.gif)<br/><br/>
 Include CropImageView into your layout.xml file
 ```xml
 <com.veracity.sdk.crop.CropImageView
