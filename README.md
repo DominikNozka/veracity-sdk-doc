@@ -18,7 +18,7 @@ Veracity SDK includes an Activity enabling to capture item fingerprint in the .p
 
 ## Instalation
 add the jitpack.io repository to your build.gradle file:
-```
+```groovy
 allprojects {
  repositories {
     jcenter()
