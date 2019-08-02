@@ -33,14 +33,14 @@ add implementation of sdk to your build.gradle file:
 ```
 implementation 'com.github.DominikNozka:veracity-sdk:1.0.5'
 ```
-Veracity SDK is still a private repository, please contact jan@veracitiyprotocol.com to obtain authToken
+Veracity SDK is still a private repository, please contact jan@veracitiyprotocol.org to obtain authToken
 add the token to $HOME/.gradle/gradle.properties:
 ```
-authToken=pleaseContact_jan@veracitiyprotocol.com_toObtainAuthTo
+authToken=pleaseContact_jan@veracitiyprotocol.org_toObtainAuthTo
 ```
 
 add permissions, Activities and Service declaration to your AndroidManifest.xml
-```
+```xml
 <uses-permission android:name="android.permission.CAMERA" />
 <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
