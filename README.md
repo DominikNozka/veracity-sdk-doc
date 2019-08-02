@@ -230,7 +230,13 @@ When the image is cropped, you'll get your cropped image file with thumbnail in 
 ```kotlin
 override fun onImageCropped(jpegCropped: File,thumbnail:File){ }
 ```
-
+Don't forget to call recycle() onDestroy() to recycle images in crop_view
+```kotlin
+override fun onDestroy() {
+   super.onDestroy()
+   crop_view.recycle()
+}
+```
 ## Detail Caputure
 DetailActivity includes augmented reality, as well as manual guiding mechanism to obtain image fingerprints in the .png file format.
 <br/>
