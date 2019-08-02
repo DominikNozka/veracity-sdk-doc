@@ -17,20 +17,56 @@ Allows you to download data from our database. The API includes automatic downlo
 Veracity SDK includes an Activity enabling to capture item fingerprint in the .png file format. It includes augmented reality, as well as manual guiding mechanism to obtain image fingerprints.
 
 ## Instalation
-Add the jitpack.io repository to your build.gradle file:
+add the jitpack.io repository to your build.gradle file:
 ```
 allprojects {
  repositories {
     jcenter()
-    maven { url "https://jitpack.io" }
+    maven {
+            url "https://jitpack.io"
+            credentials { username authToken }
+        }
  }
 }
 ```
-and add implementation of sdk to your build.gradle file:
+add implementation of sdk to your build.gradle file:
 ```
 implementation 'com.github.DominikNozka:veracity-sdk:1.0.5'
 ```
-Note: Veracity SDK is still a private repository, please contact jan@veracitiyprotocol.com to obtain a permission.
+add the token to $HOME/.gradle/gradle.properties:
+```
+authToken=pleaseContact_jan@veracitiyprotocol.com_toObtainAuthTo
+```
+Note: Veracity SDK is still a private repository, please contact jan@veracitiyprotocol.com to obtain authToken.
+
+add permissions, Activities and Service declaration to your AndroidManifest.xml
+```
+<uses-permission android:name="android.permission.CAMERA" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<uses-permission android:name="android.permission.INTERNET" />
+<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
+<activity android:name=".ActivityCropp" />
+
+<activity
+      android:name="com.veracity.sdk.detail.DetailActivity"
+      android:screenOrientation="portrait" />
+      
+<service
+      android:name="com.veracity.sdk.api.uploader.UploadService"
+      android:permission="android.permission.BIND_JOB_SERVICE"/>
+```
+
+## Requirements
+Min SDK version: Android 8.0 (API level 26)
+Camera: YUV support with 10MP resolution and higher
+
+To check if your device has adequate camera call function:
+```kotlin
+AppReq.check(context)
+```
 
 ## Input data (upload)
 ### Protection
