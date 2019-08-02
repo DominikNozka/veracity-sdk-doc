@@ -201,7 +201,7 @@ ProtectGetList(context, getListFromCache).Query {
 
 ### Image Cropp
 Veracity SDK includes image cropp view with automatic edge detection and perspective correction 
-![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/image_cropp.gif)
+![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/image_cropp.gif)<br/>
 Include CropImageView into your layout.xml file
 ```xml
 <com.veracity.sdk.crop.CropImageView
@@ -216,15 +216,16 @@ Implement CropEvent and PostionEvent interface in your Activity
 ```kotlin
 class ActivityCropp:Activity(),CropImageView.CropEvent,CropImageView.PositionEvent{
 ```
-Initialize CropView, input file needs to be in 4:3(H:W) aspect ratio
+Initialize CropView 
 ```kotlin
-crop_view.findPositions(this,this, File("path_to_4:3_input_image"),File("file_path_to_image_result"),File("file_path_to_image_result_thumbnail"))
+//input file needs to be in 4:3(H:W) aspect ratio
+crop_view.findPositions(this,this, File("path_to_4:3_input_image_file"),File("file_path_to_image_result"),File("file_path_to_image_result_thumbnail"))
 ```
 After onPositionsFound() method call, you can crop the image
 ```kotlin
 crop_view.cropImage(this)
 ```
-When the image is cropped, you'll get your cropped image file with thumbnail in jpeg image format
+When the image is cropped, you'll get your cropped image file with thumbnail in jpeg image format in onImageCropped method
 ```kotlin
 override fun onImageCropped(jpegCropped: File,thumbnail:File){ }
 ```
