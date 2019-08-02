@@ -233,5 +233,3 @@ val detailLocation = DetailLocation(100,100,1500,2000)
 
 DetailActivity.launch(detailConfigVerify,this)
 ```
-## Example App
-Having issues with the integration? Check out our [ExampleActivity](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/SampleActivity.kt)
