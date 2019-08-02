@@ -67,6 +67,21 @@ To check if your device has adequate camera call function:
 ```kotlin
 AppReq.check(context)
 ```
+## Authentication
+1.) Implement ProtectEvent interface in your Activity
+```kotlin
+class ExampleActivity:Activity(),Authenticate.LoginListener{ ...
+```
+2.) Override methods in you Activity
+```kotlin
+override fun onLogInSuccess(){}
+override fun onLogInFailure(error: String){}
+```
+3.) Authenticate with credentials
+Note: please contact jan@veracitiyprotocol.org to obtain credentials ("Email","Password")
+```kotlin
+Authenticate(this@MainActivity).logIn("Email","Password",this)
+```
 
 ## Input data (upload)
 ### Protection
@@ -125,18 +140,18 @@ VeracitySdk(context).upload(verifyAdd)
 ```kotlin
 class ExampleActivity:Activity(),ProtectEvent.EventListener{ ...
 ```
-2.) Initialize ProtectEvent at onCreate in your Activity 
-```kotlin
-val protectEvent = ProtectEvent(context,this)
-protectEvent.registerReceiver()
-```
-3.) Override methods in you Activity
+2.) Override methods in you Activity
 ```kotlin
 override fun onProtectUploadingFinished(protectAdd: ProtectAdd){}
 override fun onProtectUploadingStarted(protectAdd: ProtectAdd){}
 override fun onProtectUploadingProgress(progress: Int, uploadSpeed: String, protectAdd: ProtectAdd) {}
 override fun onProtectUploadingFailed(failReason:String,protectAdd: ProtectAdd){}
 override fun onProtectAnalyzingFinished(protectGet: ProtectGet) {}
+```
+3.) Initialize ProtectEvent at onCreate in your Activity 
+```kotlin
+val protectEvent = ProtectEvent(context,this)
+protectEvent.registerReceiver()
 ```
 4.) Unregister ProtectEvent at onDestroy in your Activity 
 ```kotlin 
@@ -148,18 +163,18 @@ protectEvent.unregisterReceiver()
 ```kotlin
 class ExampleActivity:Activity(),VerifyEvent.EventListener{ ...
 ```
-2.) Initialize VerifyEvent Object at onCreate in your Activity 
-```kotlin
-val verifyEvent = VerifyEvent(context,this)
-verifyEvent.registerReceiver()
-```
-3.) Override methods in you Activity
+2.) Override methods in you Activity
 ```kotlin
 override fun onVerifyUploadingStarted(verifyAdd: VerifyAdd) {}
 override fun onVerifyUploadingFailed(failReason: String, verifyAdd: VerifyAdd) {}
 override fun onVerifyUploadingProgress(progress: Int, uploadSpeed: String, verifyAdd: VerifyAdd) {}
 override fun onVerifyUploadingFinished(verifyAdd: VerifyAdd) {}
 override fun onVerifyAnalyzingFinished(verifyGet: VerifyGet) {}
+```
+3.) Initialize VerifyEvent Object at onCreate in your Activity 
+```kotlin
+val verifyEvent = VerifyEvent(context,this)
+verifyEvent.registerReceiver()
 ```
 4.) Unregister VerifyEvent Object at onDestroy in your Activity 
 ```kotlin 
