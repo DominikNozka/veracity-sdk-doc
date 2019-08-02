@@ -198,11 +198,13 @@ ProtectGetList(context, getListFromCache).Query {
       //You can iterate through-> it (it:ArrayList<ProtectGet>)         
 }
 ```
+
+### Image Cropp
+
 ## Detail Caputure
 DetailActivity includes augmented reality, as well as manual guiding mechanism to obtain image fingerprints in the .png file format.
 <br/>
-![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/ar_gif.gif)
-![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/manual_gif.gif)
+![](https://github.com/DominikNozka/veracity-sdk-doc/blob/master/image_cropp.gif)
 
 ### Protection
 Configure a folder with two fingerprint (.png files) and set an overview path and size in the detialConfig constructor.
