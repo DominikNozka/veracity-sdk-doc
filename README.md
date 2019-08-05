@@ -33,6 +33,7 @@ add implementation of sdk to your build.gradle file:
 ```groovy
 implementation 'com.github.DominikNozka:veracity-sdk:version'
 ```
+[![](https://jitpack.io/v/DominikNozka/veracity-sdk.svg)](https://jitpack.io/#DominikNozka/veracity-sdk)
 Veracity SDK is still a private repository, please contact jan@veracitiyprotocol.org to obtain authToken
 add the token to $HOME/.gradle/gradle.properties:
 ```groovy
